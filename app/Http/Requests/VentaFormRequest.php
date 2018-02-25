@@ -4,7 +4,7 @@ namespace Ventas\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class IngresoFormRequest extends FormRequest
+class VentaFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,15 @@ class IngresoFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'idproveedor'=>'required',
+            'idcliente'=>'required',
             'tipo_comprobante'=>'required|max:20',
             'serie_comprobante'=>'max:7',
             'num_comprobante'=>'required|max:10',
             'idarticulo'=>'required',
             'cantidad'=>'required',
-            'precio_compra'=>'required',
-            'precio_venta'=>'required'
+            'precio_venta'=>'required',
+            'descuento'=>'required',
+            'total_venta'=>'required'
         ];
     }
 }
