@@ -23,6 +23,7 @@ class VentaController extends Controller
     }
     public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['user', 'admin']);
         if ($request) {
             $query=trim($request->get('searchText'));
             $ventas=DB::table('venta as v')

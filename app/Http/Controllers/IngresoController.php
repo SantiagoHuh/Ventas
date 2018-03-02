@@ -22,6 +22,7 @@ class IngresoController extends Controller
     }
     public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['user', 'admin']);
         if ($request) {
            $query=trim($request->get('searchText'));
            $ingresos=DB::table('ingreso as i')

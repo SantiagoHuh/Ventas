@@ -17,6 +17,7 @@ class CategoriaController extends Controller
     }
     public function index(Request $request)
     {
+      $request->user()->authorizeRoles(['user', 'admin']);
       if ($request) {
         $query = trim($request->get('searchText'));
         $categorias = DB::table('categoria')->where('nombre','LIKE','%'.$query.'%')->where('condicion','=','1')

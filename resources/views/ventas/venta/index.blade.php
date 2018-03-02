@@ -2,7 +2,11 @@
 @section ('contenido')
 <div class="row">
   <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-    <h3>Listado de Ventas <a href="venta/create"><button class="btn btn-success">Nuevo</button></a></h3>
+    @if(Auth::user()->hasRole('admin'))
+      <h3>Listado de Ventas <a href="venta/create"><button class="btn btn-success">Nuevo</button></a></h3>
+    @else
+      <h3>Listado de Compras <a href="venta/create"><button class="btn btn-success">Nueva Compra</button></a></h3>
+    @endif
     @include('ventas.venta.search')
   </div>
 </div>

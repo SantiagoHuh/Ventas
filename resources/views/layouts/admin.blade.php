@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ADVentas | www.megabite.com.mx</title>
+    <title>E-Market | www.emarket.com.mx</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -28,9 +28,9 @@
         <!-- Logo -->
         <a href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>AD</b>V</span>
+          <span class="logo-mini"><b>E-</b>Market</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>ADVentas</b></span>
+          <span class="logo-lg"><b>E-Market</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -48,15 +48,15 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <small class="bg-red">Online</small>
-                  <span class="hidden-xs">Santiago Ayran Huh Can</span>
+                  <span class="hidden-xs"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
 
                     <p>
-                      www.megabite.com.mx - MegaBite
-                      <small>www.youtube.com/megabite</small>
+                      www.emarket.com.mx - E-Market
+                      <small>www.youtube.com/emarket</small>
                     </p>
                   </li>
 
@@ -84,7 +84,7 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header"></li>
-
+            @if(Auth::user()->hasRole('admin'))
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-laptop"></i>
@@ -96,7 +96,9 @@
                 <li><a href="{{url('almacen/categoria')}}"><i class="fa fa-circle-o"></i> Categorías</a></li>
               </ul>
             </li>
+            @endif
 
+            @if(Auth::user()->hasRole('admin'))
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-th"></i>
@@ -108,6 +110,8 @@
                 <li><a href="{{url('compras/proveedor')}}"><i class="fa fa-circle-o"></i> Proveedores</a></li>
               </ul>
             </li>
+            @endif
+            @if(Auth::user()->hasRole('admin'))
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-shopping-cart"></i>
@@ -119,7 +123,20 @@
                 <li><a href="{{url('ventas/cliente')}}"><i class="fa fa-circle-o"></i> Clientes</a></li>
               </ul>
             </li>
+            @else
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-shopping-cart"></i>
+                  <span>Ventas</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="{{url('ventas/venta')}}"><i class="fa fa-circle-o"></i> Ventas</a></li>
+                </ul>
+              </li>
+            @endif
 
+            @if(Auth::user()->hasRole('admin'))
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-folder"></i> <span>Acceso</span>
@@ -130,8 +147,10 @@
 
               </ul>
             </li>
-             <li>
-              <a href="#">
+            @endif
+            @if(Auth::user()->hasRole('admin'))
+            <li>
+              <a href="{{url('opcional/ayuda')}}">
                 <i class="fa fa-plus-square"></i> <span>Ayuda</span>
                 <small class="label pull-right bg-red">PDF</small>
               </a>
@@ -142,6 +161,20 @@
                 <small class="label pull-right bg-yellow">IT</small>
               </a>
             </li>
+            @endif
+            @if(Auth::user()->hasRole('admin'))
+              <li>
+                <a href="">
+                  <i class="fa fa-info-circle"> <span class="label bg-green-active">Acceso como administrador</span></i>
+                </a>
+              </li>
+            @else
+              <li>
+                <a href="">
+                  <i class="fa fa-info-circle"> <span class="label bg-yellow-active">Acceso Usuario</span></i>
+                </a>
+              </li>
+            @endif
 
           </ul>
         </section>
@@ -194,7 +227,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.3.0
         </div>
-        <strong>Copyright &copy; 2015-2020 <a href="www.megabite.com.mx">MegaBite</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2018-2020 <a href="www.emarket.com.mx">E-Market</a>.</strong> All rights reserved.
       </footer>
 
 

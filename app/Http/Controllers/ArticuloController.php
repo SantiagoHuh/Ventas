@@ -17,6 +17,7 @@ class ArticuloController extends Controller
   }
   public function index(Request $request)
   {
+    $request->user()->authorizeRoles(['user', 'admin']);
     if ($request) {
       $query = trim($request->get('searchText'));
       $articulos = DB::table('articulo AS a')
